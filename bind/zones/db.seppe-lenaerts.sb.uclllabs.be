@@ -1,5 +1,5 @@
-$TTL    1
-@    IN    SOA   seppe-lenaerts.sb.uclllabs.be. hostmaster.seppe-lenaerts.sb.uclllabs.be. (
+$TTL	600000  
+@    IN    SOA   seppe-lenaerts.sb.uclllabs.be. root.seppe-lenaerts.sb.uclllabs.be. (
          2020103010        ; Serial
                  5M        ; Refresh
                  5M        ; Retry
