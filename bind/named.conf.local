@@ -14,3 +14,8 @@ zone "seppe-lenaerts.sb.uclllabs.be" {
 	auto-dnssec maintain;
 	allow-transfer { 193.191.176.254; 193.191.177.4; 193.191.177.207; };
 }
+
+zone "anthony-vanroost.sb.uclllabs.be" {
+	type slave;
+	masters {193.191.177.132;};
+}
