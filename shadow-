@@ -27,3 +27,5 @@ systemd-timesync:*:18377:0:99999:7:::
 uuidd:*:18377:0:99999:7:::
 tcpdump:*:18377:0:99999:7:::
 systemd-coredump:!!:18527::::::
+check:$6$DsZYwg1vjYNXJK.0$Wdfiskq0N5GGwtHwfHVEPtPUyct5uYDIZlECsvxNqwUJBVdNAGjMoShGndLpiGV5xfTbz/qfm5xZKQlIXtSPy.:18541:0:99999:7:::
+bind:*:18589:0:99999:7:::
