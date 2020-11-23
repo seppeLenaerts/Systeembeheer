@@ -9,7 +9,7 @@ $TTL	600000
 @       IN      NS      ns.seppe-lenaerts.sb.uclllabs.be.
 @       IN      NS      ns1.uclllabs.be.
 @       IN      NS      ns2.uclllabs.be.
-@	IN	MX 10	mx.seppe-lenaerts.sb.uclllabs.be
+@	IN	MX 10	mx.seppe-lenaerts.sb.uclllabs.be.
 @       IN      NS      ns.anthony-vanroost.sb.uclllabs.be.
 ; slave
 
