@@ -1,6 +1,6 @@
 $TTL	600000  
 @    IN    SOA   seppe-lenaerts.sb.uclllabs.be. root.seppe-lenaerts.sb.uclllabs.be. (
-         2020103010        ; Serial
+         2020103011        ; Serial
                  5M        ; Refresh
                  5M        ; Retry
                  5M        ; Expire
@@ -9,7 +9,7 @@ $TTL	600000
 @       IN      NS      ns.seppe-lenaerts.sb.uclllabs.be.
 @       IN      NS      ns1.uclllabs.be.
 @       IN      NS      ns2.uclllabs.be.
-@	IN	MX 10	mx.seppe-lenaerts.sb.uclllabs.be.
+@	IN	MX 5	mx.seppe-lenaerts.sb.uclllabs.be.
 @       IN      NS      ns.anthony-vanroost.sb.uclllabs.be.
 ; slave
 

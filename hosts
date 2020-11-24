@@ -4,4 +4,6 @@ ff02::1		ip6-allnodes
 ff02::2		ip6-allrouters
 # --- BEGIN PVE ---
 193.191.177.207 seppe-lenaerts.sb.uclllabs.be seppe-lenaerts
+193.191.177.157 jeroen-verheyden2.sb.uclllabs.be jeroen-verheyden2
+193.191.177.132 anthony-vanroost.sb.uclllabs.be anthony-vanroost
 # --- END PVE ---
