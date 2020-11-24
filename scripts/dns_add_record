@@ -1,0 +1,54 @@
+#!/bin/bash
+
+while getopts ":t:" opt; do
+	case $opt in
+		t) OPTION="$OPTARG"
+	;;
+		\?) echo "Invalid option -$OPTARG" >&2
+	;;
+	esac
+done
+
+if [ $1 != "-t" ]; then
+	SUBDOMAIN=$(cut -d'.' -f1 <<< "$3")
+	if [ -e "/etc/bind/mrt-tests/db.$SUBDOMAIN" ] then
+	        echo "$1  IN  A    $2"  >> "/etc/bind/mrt-tests/db.$SUBDOMAIN"
+	else
+		echo "db file for $SUBDOMAIN does not exists"
+	        exit 1
+	fi
+	exit 0
+fi
+
+case $OPTION in
+	"A")
+        	SUBDOMAIN=$(cut -d'.' -f1 <<< "$5")
+	    	if [ -e "/etc/bind/mrt-tests/db.$SUBDOMAIN" ] then
+	        	echo "$3  IN  A    $4"  >> "/etc/bind/mrt-tests/db.$SUBDOMAIN"
+    		else
+        		echo "db file for $SUBDOMAIN does not exists"
+        		exit 1
+		fi
+
+	;;
+	"CNAME")
+	        SUBDOMAIN= $(cut -d'.' -f2 <<< "$4")
+        	if [ -e "/etc/bind/mrt-tests/db.$SUBDOMAIN" ] then
+	        	echo "$3  IN  CNAME    $4."  >> "/etc/bind/mrt-tests/db.$SUBDOMAIN"
+        	else
+			echo "db file for $SUBDOMAIN does not exists"
+	        	exit 1
+        	fi
+	;;
+	"MX")
+        	SUBDOMAIN= $(cut -d'.' -f1 <<< "$5")
+	        if [ -e "/etc/bind/mrt-tests/db.$SUBDOMAIN" ] then
+		        echo "       IN       MX    10    $3"  >> "/etc/bind/mrt-tests/db.$SUBDOMAIN"
+		        echo "$3      IN       A        $4"  >> "/etc/bind/mrt-tests/db.$SUBDOMAIN"
+	        else
+        		echo "db file for $SUBDOMAIN does not exists"
+		        exit 1
+        	fi
+	;;
+esac
+systemctl restart bind9
