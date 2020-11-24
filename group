@@ -57,3 +57,4 @@ systemd-coredump:x:999:
 check:x:1000:
 incron:x:117:
 bind:x:118:
+mysql:x:119:
