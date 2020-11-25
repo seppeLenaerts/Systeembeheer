@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ "$(id -u)" -ne 0 ]; then
+        echo "This script must be run by root" >&2
+        exit 1
+fi
+
+FQDN=$1
+ZONE="$(cut -d'.' -f1 <<< "$1")"
+SUB="$(cut -d'.' -f2 <<< "$1")"
+
+if [ -e "/etc/bind/mrt-tests/db.$SUB" ];
+then
+	touch "/etc/apache2/sites-available/site_$ZONE.conf"
+        FILE="/etc/apache2/sites-available/site_$ZONE.conf"
+        echo "<VirtualHost *:80>" >> $FILE
+        echo "ServerAdmin webmaster@localhost" >> $FILE
+        echo "ServerName $ZONE.$SUB.seppe-lenaerts.sb.uclllabs.be" >> $FILE
+        echo "DocumentRoot /var/www/$ZONE/$SUB/public_html" >> $FILE
+        echo "ErrorLog \${APACHE_LOG_DIR}/$ZONE-$SUB-error.log" >> $FILE
+        echo "CustomLog \${APACHE_LOG_DIR}/$ZONE-$SUB-access.log combined" >> $FILE
+        echo "</VirtualHost>" >> $FILE
+
+        mkdir -p "/var/www/$ZONE/$SUB/public_html"
+	echo "welcome $ZONE.$SUB" > /var/www/$ZONE/$SUB/public_html/index.html
+
+        a2ensite site_$ZONE.conf
+        systemctl reload apache2
+else
+        echo "Er staat geen overeenkomend bestand in mrt-tests"
+        exit 1
+fi
