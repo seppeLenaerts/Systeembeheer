@@ -58,3 +58,5 @@ check:!::
 incron:!::
 bind:!::
 mysql:!::
+ntp:!::
+dovecot:!::
