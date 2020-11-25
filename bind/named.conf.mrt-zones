@@ -1,1 +1,8 @@
 #Empty for now
+
+
+zone "plopkoek.seppe-lenaerts.sb.uclllabs.be" {
+		type master;
+		file "/etc/bind/mrt-tests/db.plopkoek";
+		allow-transfer { 193.191.177.207; };
+	};
