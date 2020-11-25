@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ $# -eq 0 ]; then
+        echo "Please add a name for the new zone" >&2
+        exit 1
+fi
+
 if [ "$(id -u)" -ne 0 ]; then
         echo "Please run as root" >&2
         exit 1
